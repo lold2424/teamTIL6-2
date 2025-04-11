@@ -1,2 +1,1 @@
-# teamtTIL6-2
-second Bootcamp team
+# 멋쟁이사자처럼 백엔드 자바15기 회고 6팀
