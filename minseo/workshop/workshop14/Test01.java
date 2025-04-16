@@ -1,4 +1,4 @@
-package workshop;
+package workshop.workshop14;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
