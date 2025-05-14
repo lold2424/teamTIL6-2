@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Employee 리스트 생성 -->
+	<bean id="salesEmp1" class="com.sec02.Employee">
+		<constructor-arg value="홍길동" />
+		<constructor-arg value="사원" />
+	</bean>
+
+	<bean id="salesEmp2" class="com.sec02.Employee">
+		<constructor-arg value="김유신" />
+		<constructor-arg value="대리" />
+	</bean>
+
+	<bean id="devEmp1" class="com.sec02.Employee">
+		<constructor-arg value="이순신" />
+		<constructor-arg value="과장" />
+	</bean>
+
+	<bean id="devEmp2" class="com.sec02.Employee">
+		<constructor-arg value="유관순" />
+		<constructor-arg value="주임" />
+	</bean>
+
+	<!-- 부서별 리스트 -->
+	<bean id="salesList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="salesEmp1" />
+				<ref bean="salesEmp2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="devList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="devEmp1" />
+				<ref bean="devEmp2" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- Map<String, List<Employee>> -->
+	<bean id="departmentMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="Sales" value-ref="salesList" />
+				<entry key="Development" value-ref="devList" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- EmployeeService 주입 -->
+	<bean id="employeeService" class="com.sec02.EmployeeService">
+		<property name="departmentMap" ref="departmentMap" />
+	</bean>
+</beans>
